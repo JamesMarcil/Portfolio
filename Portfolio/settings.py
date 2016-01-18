@@ -78,5 +78,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
-STATIC_ROOT = join(BASE_DIR, '/public/static')
+STATIC_ROOT = join(dirname(BASE_DIR), 'public/static')
 STATICFILES_DIRS = (STATIC_PATH,)
