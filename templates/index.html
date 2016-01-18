@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head_scripts %}
+<link rel="stylesheet" href="{% static 'css/carousel.css' %}" media="screen"/>
+{% endblock %}
+
+{% block body_title %}
+Welcome!
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+    <div id="carousel" class="visible-md visible-lg carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            {% for project in projects %}
+                <div class="item {% if forloop.first %}active{% endif %}">
+                    <a href="{% url 'project' project.url %}"> 
+                        <img class="carousel-img center-block" src="{% static project.screenshot %}" alt="{{ project.title }}"/> 
+
+                        <div class="carousel-caption">
+                            <p> {{ project.title }} </p>
+                        </div>
+                    </a>
+                </div>
+            {%  endfor %}
+        </div>
+
+        <ol class="carousel-indicators">
+            {% for project in projects %}	
+                {% if forloop.first %}
+                    <li data-target="#carousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+                {% else %}
+                    <li data-target="#carousel" data-slide-to="{{ forloop.counter0 }}"></li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+            
+        <a class="left carousel-control" href="#carousel" data-slide="prev">
+                <span class="glyphicon glypicon-chevron-left"> </span>
+        </a>
+
+        <a class="right carousel-control" href="#carousel" data-slide="next">
+                <span class="glyphicon glypicon-chevron-right"> </span>
+        </a>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-md-12 well">
+        <p> 
+            Welcome to my personal website!
+            I am currently looking for my next co-op in the summer of 2016, and I would love to hear from you.
+            You can find projects that I have worked on in the <a href="{% url 'projects' %}"> Projects </a> section.
+            If you would like to reach out to me, you can find my contact information in the <a href="{% url 'contact' %}"> Contact </a> section. 
+        </p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title >{% block body_title %}James Marcil's Portfolio{% endblock %}</title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+		{% block head_scripts %}{% endblock %}
+	</head>
+
+	<body>
+		<div class="container">
+			<h1 class="h1"> <strong> James Marcil's Personal Portfolio </strong> </h1>
+		</div>
+
+                <div class="navbar-wrapper">
+                    <div class="container">
+                        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+                            <div class="container">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                        <span class="sr-only"> Toggle Navigation </span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <div class="navbar-collapse collapse">
+                                    <ul class="nav navbar-nav">
+                                        <li> <a href="{% url 'index' %}"> Home </a> </li>	
+                                        <li> <a href="{% url 'about' %}"> About </a> </li>
+                                        <li> <a href="{% static 'resume.pdf' %}"> Resume </a> </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Projects <span class="caret"></span> </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="{% url 'projects' %}"> Projects Page </a></li>
+                                                    <li class="divider"> </li>
+                                                    {% for project in projects %}
+                                                        <li><a href="{% url 'project' project.url %}"> {{ project.title }} </a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                        </li>
+                                        <li> <a href="https://github.com/jamesmarcil"> Github </a> </li>
+                                        <li> <a href="https://www.linkedin.com/in/james-marcil-26a04765"> LinkedIn </a> </li> 
+                                        <li> <a href="{% url 'contact' %}"> Contact </a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="jumbotron">
+                        {% block body_block %}{% endblock %}
+                    </div>
+                </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		{% block body_scripts %}{% endblock %}
+	</body>
+
+	<footer class="container">
+		&copy; 2016 All Rights Reserved -- James Marcil <br />
+		Built with 
+            <a href="http://getbootstrap.com">Bootstrap</a>,
+            <a href="https://jquery.com/">JQuery</a>,
+            and <a href="http://djangoproject.com">Django</a>
+	</footer>
+</html>

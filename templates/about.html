@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block body_title %}
+About Me
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+    <div class="col-md-7">
+        <h2 class="h2"> <strong> About Me: </strong> </h2>
+        <p>
+            I am a 22 year old who originally hails from Saranac, NY. I am
+            currently in my fifth and final year at the Rochester Institute of
+            Technology. I am pursuing my Undergraduate degree in Game Design &
+            Development, and Computer Science. I have a strong interest in game
+            programming, as well as a newly developing interest in web
+            application programming sparked by the construction of this site and
+            my time spent on co-op. 
+        </p>
+        <p> 
+            I have completed 2 co-ops, and I am currently on the lookout for my
+            third and final co-op for the summer of 2016.
+        </p>
+    </div>
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-heading"> Spring Semester '16 Courses </div>
+            <ul class="list-group">
+                <li class="list-group-item"> Game Engine Design and Development </li>
+                <li class="list-group-item"> Global Illumination </li>
+                <li class="list-group-item"> Systems Programming </li>
+                <li class="list-group-item"> Principles of Data Management </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

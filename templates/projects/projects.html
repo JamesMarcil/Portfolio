@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head_scripts %}
+    <link rel="stylesheet" media="screen" href="{% static 'css/project.css' %}" />
+{% endblock %}
+
+{% block body_title %}
+    Projects
+{% endblock %}
+
+{% block body_block %}
+<div class="container">
+    {% if projects %}
+        {% for project in projects %} 
+            {% cycle '<div class="row">' '' %}
+                <div class="col-md-4 {% cycle 'col-md-offset-1' 'col-md-offset-2' %}">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <img id="screenshot" class="img-thumbnail" src="{% static project.screenshot %}" alt="{{ project.title }}" />
+                        </div>
+                        <div class="panel-footer text-center">
+                            <strong><a href="{% url 'project' project.url %}"> {{ project.title }} </a> </strong>
+                        </div>
+                    </div>
+                </div>
+            {% cycle '' '</div>' %}
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

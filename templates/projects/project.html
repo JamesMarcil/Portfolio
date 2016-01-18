@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block head_scripts %}
+    <link href="{% static 'css/project.css' %}" rel="stylesheet" media="screen"/>
+{% endblock %}
+
+{% block body_title %}
+    {{ project.title }}
+{% endblock %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <img id="screenshot" class="img-thumbnail" src="{% static project.screenshot %}" alt="{{ project.title }}"/>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong> Created by: </strong> 
+                    </div>
+                    
+                    <div class="panel-body">
+                        {{ project.authors }}
+                    </div>
+                    
+                    <div class="panel-heading">
+                        <strong> Language(s): </strong><br /> 
+                    </div>
+
+                    <div class="panel-body">
+                        {{ project.language }}
+                    </div>
+
+                    <div class="panel-heading">
+                        <strong> Libraries/Tools: </strong><br /> 
+                    </div>
+
+                    <div class="panel-body">
+                        {{ project.technology }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-7">
+                <h2> <strong> {{ project.title }}: </strong> </h2>
+                <p> {{ project.description|safe }} </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
